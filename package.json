@@ -1,0 +1,54 @@
+{
+  "name": "use-initializer",
+  "version": "1.0.0",
+  "description": "A React hook for once-only initialization with dependency tracking and cleanup",
+  "author": "haxiomic (George Corney)",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "hook",
+    "initializer",
+    "typescript",
+    "react-hooks"
+  ],
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/haxiomic/use-initializer"
+  },
+
+  "main": "dist/index.js",
+
+  "types": "dist/index.d.ts",
+
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "prepare": "tsc",
+    "install": "tsc",
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  
+  "dependencies": {
+  },
+
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/react": "^18.0.0"
+  },
+
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+
+  "exports": {
+    "./*": "./dist/*.js",
+    "./**/*": "./dist/**/*.js",
+    "./*.tsx": "./dist/*.tsx",
+    "./**/*.tsx": "./dist/**/*.tsx",
+    "./*.js": "./dist/*.js",
+    "./**/*.js": "./dist/**/*.js",
+    "./*.ts": "./dist/*.ts",
+    "./**/*.ts": "./dist/**/*.ts"
+  }
+}
