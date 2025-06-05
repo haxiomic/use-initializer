@@ -1,6 +1,6 @@
 {
   "name": "use-initializer",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "A React hook for once-only initialization with dependency tracking and cleanup",
   "author": "haxiomic (George Corney)",
   "license": "MIT",
@@ -11,19 +11,28 @@
     "typescript",
     "react-hooks"
   ],
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "http://github.com/haxiomic/use-initializer"
   },
-
-  "main": "dist/useInitializer.js",
-
-  "types": "dist/useInitializer.d.ts",
-
+  "type": "module",
+  "main": "dist/cjs/useInitializer.js",
+  "module": "dist/esm/useInitializer.js",
+  "types": "dist/types/useInitializer.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/useInitializer.js",
+      "import": "./dist/esm/useInitializer.js",
+      "types": "./dist/types/useInitializer.d.ts"
+    }
+  },
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "build": "tsc",
+    "prepack": "npm run clean && npm run build",
+    "build": "npm run clean && npm run build-esm && npm run build-cjs",
+    "build-esm": "tsc --project tsconfig.json && echo '{\"type\": \"module\"}' > dist/esm/package.json",
+    "build-cjs": "tsc --project tsconfig.cjs.json && echo '{\"type\": \"commonjs\"}' > dist/cjs/package.json",
+    "clean": "rm -rf dist",
     "dev": "tsc --watch"
   },
   
@@ -37,12 +46,5 @@
 
   "peerDependencies": {
     "react": ">=16.8.0"
-  },
-
-  "exports": {
-    ".": {
-      "types": "./dist/useInitializer.d.ts",
-      "import": "./dist/useInitializer.js"
-    }
   }
 }
