@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
  * reinitialized on dependency change
  * https://github.com/facebook/react/issues/27735#issuecomment-1885624506
  */
-export function useInitializer<T, Deps>(
+export function useInitializer<T, Deps = unknown[]>(
     initialize: (dependencies: Deps[]) => T,
     dispose?: (v: T) => void,
     deps: Deps[] = []
